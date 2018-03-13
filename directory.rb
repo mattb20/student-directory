@@ -6,3 +6,7 @@ puts "Harry Potter"
 puts "Ron Weasley"
 puts "Alicia Spinnet"
 puts "Oliver Wood"
+
+print "Overall, we have "
+print 6
+puts " incredible wizards (some of them are also fantastic quidditch players)"
