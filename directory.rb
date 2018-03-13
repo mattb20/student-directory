@@ -1,0 +1,8 @@
+puts "The students of Hogwarts School of Witchcraft and Wizardry"
+puts "----------------------------------------------------------"
+puts "Neville Longbottom"
+puts "Draco Malfoy"
+puts "Harry Potter"
+puts "Ron Weasley"
+puts "Alicia Spinnet"
+puts "Oliver Wood"
