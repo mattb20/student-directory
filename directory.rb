@@ -12,11 +12,8 @@ wizards = ["Neville Longbottom",
 #and then print them(a horrible way!!)
 puts "The students of Hogwarts School of Witchcraft and Wizardry"
 puts "----------------------------------------------------------"
-puts wizards[0]
-puts wizards[1]
-puts wizards[2]
-puts wizards[3]
-puts wizards[4]
-puts wizards[5]
+wizards.each do |wizard| 
+  puts wizard
+end
 #Then we give a total
 puts "Overall we have #{wizards.length} incredible wizards (some of them are also fantastic quidditch players)"
