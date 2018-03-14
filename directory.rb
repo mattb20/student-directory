@@ -9,6 +9,4 @@ puts "Ron Weasley"
 puts "Alicia Spinnet"
 puts "Oliver Wood"
 #Then we give a total
-print "Overall, we have "
-print student_number
-puts " incredible wizards (some of them are also fantastic quidditch players)"
+puts "Overall we have #{student_count} incredible wizards (some of them are also fantastic quidditch players)"
