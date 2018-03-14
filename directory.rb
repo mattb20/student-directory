@@ -19,4 +19,4 @@ puts wizards[3]
 puts wizards[4]
 puts wizards[5]
 #Then we give a total
-puts "Overall we have #{wizard_count} incredible wizards (some of them are also fantastic quidditch players)"
+puts "Overall we have #{wizards.length} incredible wizards (some of them are also fantastic quidditch players)"
