@@ -17,5 +17,10 @@ def print(wizards)
   puts wizard
 end
 end
-#Then we give a total
-puts "Overall we have #{wizards.length} incredible wizards (some of them are also fantastic quidditch players)"
+def print_footer(wizards)
+  puts "Overall we have #{wizards.length} incredible wizards (some of them are also fantastic quidditch players)"
+end
+
+print_header
+print(wizards)
+print_footer(wizards)
