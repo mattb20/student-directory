@@ -1,11 +1,12 @@
 wizard_count = 6
 #Let's put all students into an array
-wizards = ["Neville Longbottom",
-  "Draco Malfoy",
-  "Harry Potter",
-  "Ron Weasley",
-  "Alicia Spinnet",
-  "Oliver Wood"
+wizards = [ {name: "Neville Longbottom", house: "Gryffindor"},
+  {name: "Draco Malfoy", house: "Slytherin"},
+  {name: "Harry Potter", house: "Gryffindor"},
+  {name: "Ron Weasley", house: "Gryffindor"},
+  {name: "Alicia Spinnet", house: "Gryffindor"},
+  {name: "Oliver Wood", house: "Gryffindor"},
+  {name: "Cedric Diggory", house: "Hufflepuff"}
 
 ]
 def print_header
@@ -14,7 +15,7 @@ def print_header
 end
 def print(wizards)
   wizards.each do |wizard|
-  puts wizard
+  puts "#{wizard[:name]} (#{wizard[:house]} house)"
 end
 end
 def print_footer(wizards)
