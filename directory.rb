@@ -17,5 +17,21 @@ def input_wizards
   wizards
 
 end
+def print_header
+  puts "The students of Hogwarts School of Witchcraft and Wizardry"
+  puts "----------------------------------------------------------"
+end
 
-puts input_wizards
+def print(wizards)
+  wizards.each do |wizard|
+    puts "#{wizard[:name]} of house #{wizard[:house]} "
+  end
+end
+def print_footer(wizards)
+  puts "Overall, we have #{wizards.length} great wizards and witches, some being fantastic quidditch players"
+end
+
+wizards = input_wizards
+print_header
+print(wizards)
+print_footer(wizards)
