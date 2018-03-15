@@ -13,6 +13,7 @@ def input_wizards
     wizards << {name: name, house: house_of_wizard}
     puts "Now we have #{wizards.length} wizards and witches"
     # get another name from the user
+    puts "Please enter the name of the wizard/witch"
     name = gets.chomp
   end
   #return the array of wizards
@@ -26,7 +27,7 @@ end
 
 def print(wizards)
   wizards.each do |wizard|
-    puts "We have #{wizard[:name]} of #{wizard[:house]}"
+    puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
     end
 end
 def print_footer(wizards)
