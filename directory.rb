@@ -1,5 +1,5 @@
 @wizards = [] # empty array accessible to all methods
-@options_for_user = ["Input the wizards", "Show the wizards", "Show wizards by house", "Exit"] # array to store the possible options for the interactive menu
+@options_for_user = ["Input the wizards", "Show the wizards", "Show wizards by house","Print by first letter of name", "Exit"] # array to store the possible options for the interactive menu
 def interactive_menu
   loop do
     #print the menu and ask the user what to do
@@ -73,9 +73,19 @@ def process(selection)
   when "3"
     print_by_house
   when "4"
+    print_by_first_name_first_character
+  when "5"
     exit
   end
 end
-##WRITE NEW METHODS HERE:#
-
+##WRITE NEW METHODS HERE:##
+def print_by_first_name_first_character
+  puts "Please enter the first character of wizards name:"
+  letter = gets.chomp.downcase
+  @wizards.each do |wizard|
+    if wizard[:name].chars[0].downcase == letter
+      puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
+    end
+end
+end
 interactive_menu
