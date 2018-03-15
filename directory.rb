@@ -1,4 +1,5 @@
 @wizards = [] # empty array accessible to all methods
+@options_for_user = ["Input the wizards", "Show the wizards", "Show wizards by house", "Exit"] # array to store the possible options for the interactive menu
 def interactive_menu
   loop do
     #print the menu and ask the user what to do
@@ -6,20 +7,7 @@ def interactive_menu
     #read the input and save it into a variable
     selection = gets.chomp
     #do what the user has asked
-    case selection
-      when "1"
-      # input the wizards
-        input_wizards
-      when "2"
-      # show the wizards
-      show_wizards
-      when "3"
-       print_by_house
-      when "9"
-        exit # will cause program to terminate
-      else
-        puts "I don't know what you meant try again"
-      end
+    process(selection)
     end
   end
 def input_wizards
@@ -46,7 +34,7 @@ def print_header
   puts "----------------------------------------------------------"
 end
 
-def print
+def print_list_of_wizards
   @wizards.each do |wizard|
     puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
     end
@@ -66,17 +54,27 @@ def print_by_house
 end
 
 def print_menu
-  puts "1. Input the wizards"
-  puts "2. Show the wizards"
-  puts "3. Show wizards/witches in a certain house"
-  puts "9. Exit"
+ for i in 0..@options_for_user.length-1
+   puts "#{i+1}. #{@options_for_user[i]}"
+ end
 end
 
 def show_wizards
   print_header
-  print
+  print_list_of_wizards
   print_footer
-
 end
 
+def process(selection)
+  case selection
+  when "1"
+    input_wizards
+  when "2"
+    print_list_of_wizards
+  when "3"
+    print_by_house
+  when "4"
+    exit
+  end
+end
 interactive_menu
