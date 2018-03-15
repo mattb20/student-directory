@@ -1,25 +1,20 @@
+@wizards = [] # empty array accessible to all methods
 def interactive_menu
-  wizards = []
   loop do
     #print the menu and ask the user what to do
-    puts "1. Input the wizards"
-    puts "2. Show the wizards"
-    puts "3. Show wizards/witches in a certain house"
-    puts "9. Exit"
+    print_menu
     #read the input and save it into a variable
     selection = gets.chomp
     #do what the user has asked
     case selection
       when "1"
       # input the wizards
-        wizards = input_wizards
+        input_wizards
       when "2"
       # show the wizards
-        print_header
-        print(wizards)
-        print_footer(wizards)
+      show_wizards
       when "3"
-       print_by_house(wizards)
+       print_by_house
       when "9"
         exit # will cause program to terminate
       else
@@ -30,8 +25,6 @@ def interactive_menu
 def input_wizards
   puts "Please enter the names of the witches and wizards"
   puts "To finish, just type stop"
-  #create an empty array
-  wizards = []
   #get the name of the wizard
   name = gets.chomp
   #while the name is not equal to stop, repeat this code
@@ -39,14 +32,13 @@ def input_wizards
     #ask the user for the house of the wizard given they want to enter a wizard
     puts "Please enter the house of the wizard/witch"
     house_of_wizard = gets.chomp
-    wizards << {name: name, house: house_of_wizard}
-    puts "Now we have #{wizards.length} wizards and witches"
+    @wizards << {name: name, house: house_of_wizard}
+    puts "Now we have #{@wizards.length} wizards and witches"
     # get another name from the user
     puts "Please enter the name of the wizard/witch"
     name = gets.chomp
   end
-  #return the array of wizards
-  wizards
+
 
 end
 def print_header
@@ -54,24 +46,37 @@ def print_header
   puts "----------------------------------------------------------"
 end
 
-def print(wizards)
-  wizards.each do |wizard|
+def print
+  @wizards.each do |wizard|
     puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
     end
 end
-def print_footer(wizards)
-  puts "Overall, we have #{wizards.length} great wizards and witches, some being fantastic quidditch players"
+def print_footer
+  puts "Overall, we have #{@wizards.length} great wizards and witches, some being fantastic quidditch players"
 end
 
-def print_by_house(wizards)
+def print_by_house
   puts "Please enter the name of the house you would like to print"
   house = gets.chomp.downcase
-  wizards.each do |wizard|
+  @wizards.each do |wizard|
       if wizard[:house].downcase == house
         puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
       end
     end
 end
 
+def print_menu
+  puts "1. Input the wizards"
+  puts "2. Show the wizards"
+  puts "3. Show wizards/witches in a certain house"
+  puts "9. Exit"
+end
+
+def show_wizards
+  print_header
+  print
+  print_footer
+
+end
 
 interactive_menu
