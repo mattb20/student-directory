@@ -23,8 +23,12 @@ def print_header
 end
 
 def print(wizards)
-  wizards.each_with_index do |wizard, index|
-    puts "#{index + 1}: #{wizard[:name]} of house #{wizard[:house]} "
+  puts 'Please enter the first letter of the name of a wizard'
+  character = gets.chomp
+  wizards.each do |wizard|
+    if wizard[:name].chars[0].downcase == character
+      puts "#{wizard[:name]} of house #{wizard[:house]} "
+    end
   end
 end
 def print_footer(wizards)
