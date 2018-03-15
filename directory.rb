@@ -44,7 +44,7 @@ def print_footer
 end
 
 def print_by_house
-  puts "Please enter the name of the house you would like to print"
+  puts "Please enter the name of the house git you would like to print"
   house = gets.chomp.downcase
   @wizards.each do |wizard|
       if wizard[:house].downcase == house
@@ -64,7 +64,6 @@ def show_wizards
   print_list_of_wizards
   print_footer
 end
-
 def process(selection)
   case selection
   when "1"
@@ -77,4 +76,6 @@ def process(selection)
     exit
   end
 end
+##WRITE NEW METHODS HERE:#
+
 interactive_menu
