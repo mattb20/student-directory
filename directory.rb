@@ -23,8 +23,8 @@ def print_header
 end
 
 def print(wizards)
-  wizards.each do |wizard|
-    puts "#{wizard[:name]} of house #{wizard[:house]} "
+  wizards.each_with_index do |wizard, index|
+    puts "#{index + 1}: #{wizard[:name]} of house #{wizard[:house]} "
   end
 end
 def print_footer(wizards)
