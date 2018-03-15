@@ -23,10 +23,13 @@ def print_header
 end
 
 def print(wizards)
-  wizards_index = 0
-  while wizards_index < wizards.length
-    puts "We have #{wizards[wizards_index][:name]} of #{wizards[wizards_index][:house]}"
-    wizards_index += 1
+  puts "Please enter a maximum name length:"
+  max_length_of_name = gets.chomp.to_i
+  puts "The wizards with names shorter than #{max_length_of_name.to_s} characters"
+  wizards.each do |wizard|
+    if wizard[:name].length <= max_length_of_name
+      puts "We have #{wizard[:name]} of #{wizard[:house]}"
+    end
   end
 end
 def print_footer(wizards)
