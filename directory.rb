@@ -7,8 +7,10 @@ def input_wizards
   name = gets.chomp
   #while the name is not equal to stop, repeat this code
   while name != "stop" do
-    #add the wizard hash to the array
-    wizards << {name: name, house: :Gryffindor}
+    #ask the user for the house of the wizard given they want to enter a wizard
+    puts "Please enter the house of the wizard/witch"
+    house_of_wizard = gets.chomp
+    wizards << {name: name, house: house_of_wizard}
     puts "Now we have #{wizards.length} wizards and witches"
     # get another name from the user
     name = gets.chomp
@@ -23,14 +25,9 @@ def print_header
 end
 
 def print(wizards)
-  puts "Please enter a maximum name length:"
-  max_length_of_name = gets.chomp.to_i
-  puts "The wizards with names shorter than #{max_length_of_name.to_s} characters"
   wizards.each do |wizard|
-    if wizard[:name].length <= max_length_of_name
-      puts "We have #{wizard[:name]} of #{wizard[:house]}"
+    puts "We have #{wizard[:name]} of #{wizard[:house]}"
     end
-  end
 end
 def print_footer(wizards)
   puts "Overall, we have #{wizards.length} great wizards and witches, some being fantastic quidditch players"
