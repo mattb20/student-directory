@@ -5,7 +5,7 @@ def interactive_menu
     #print the menu and ask the user what to do
     print_menu
     #read the input and save it into a variable
-    selection = gets.chomp
+    selection = STDIN.gets.chomp
     #do what the user has asked
     process(selection)
     end
@@ -14,17 +14,17 @@ def input_wizards
   puts "Please enter the names of the witches and wizards"
   puts "To finish, just type stop"
   #get the name of the wizard
-  name = gets.chomp
+  name = STDIN.gets.chomp
   #while the name is not equal to stop, repeat this code
   while name != "stop" do
     #ask the user for the house of the wizard given they want to enter a wizard
     puts "Please enter the house of the wizard/witch"
-    house_of_wizard = gets.chomp
+    house_of_wizard = STDIN.gets.chomp
     @wizards << {name: name, house: house_of_wizard}
     puts "Now we have #{@wizards.length} wizards and witches"
     # get another name from the user
     puts "Please enter the name of the wizard/witch"
-    name = gets.chomp
+    name = STDIN.gets.chomp
   end
 
 end
@@ -76,7 +76,7 @@ def process(selection)
   when "5"
     save_wizards
   when "6"
-    load_wizards
+    try_load_wizards
   when "7"
     exit
   end
@@ -95,18 +95,31 @@ def save_wizards
 end
 def print_by_first_name_first_character
   puts "Please enter the first character of wizards name:"
-  letter = gets.chomp.downcase
+  letter = STDIN.gets.chomp.downcase
   @wizards.each do |wizard|
     if wizard[:name].chars[0].downcase == letter
-      puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
+      puts ("We have #{wizard[:name]}1 of #{wizard[:house]}").center(58)
     end
 end
 end
-def load_wizards
-  file = File.open("wizards.csv", "r")
+def try_load_wizards(filename = "wizards.csv")
+  filename = ARGV.first #first argument from the command line
+  return if filename.nil? # get out of method if it is not given
+  if File.exists?(filename) #if it exists
+    load_wizards(filename)
+    puts "Loaded #{@wizards.count} wizards from #{filename}"
+  else # it if doesn't exist
+    puts "Sorry, #{filename} doesn't exist."
+    exit #quit the program
+  end
+end
+
+def load_wizards(filename)
+  file = File.open(filename, "r")
   file.readlines.each do |line|
     name, house = line.chomp.split(",")
     @wizards << {name: name, house: house.to_sym}
 end
+  file.close
 end
 interactive_menu
