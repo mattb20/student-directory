@@ -1,5 +1,5 @@
 @wizards = [] # empty array accessible to all methods
-@options_for_user = ["Input the wizards", "Show the wizards", "Show wizards by house","Print by first letter of name", "Save the list of wizards", "Exit"] # array to store the possible options for the interactive menu
+@options_for_user = ["Input the wizards", "Show the wizards", "Show wizards by house","Print by first letter of name", "Save the list of wizards", "Load the wizards", "Exit"] # array to store the possible options for the interactive menu
 def interactive_menu
   loop do
     #print the menu and ask the user what to do
@@ -76,6 +76,8 @@ def process(selection)
   when "5"
     save_wizards
   when "6"
+    load_wizards
+  when "7"
     exit
   end
 end
@@ -98,6 +100,13 @@ def print_by_first_name_first_character
     if wizard[:name].chars[0].downcase == letter
       puts ("We have #{wizard[:name]} of #{wizard[:house]}").center(58)
     end
+end
+end
+def load_wizards
+  file = File.open("wizards.csv", "r")
+  file.readlines.each do |line|
+    name, house = line.chomp.split(",")
+    @wizards << {name: name, house: house.to_sym}
 end
 end
 interactive_menu
